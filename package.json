@@ -29,12 +29,18 @@
     "package-echo": "./dist-cli/cli.js"
   },
   "scripts": {
+    "analyze": "tsx src/cli/index.ts analyze",
+    "build": "npm run generate:demo && npm run typecheck && vite build",
+    "demo": "tsx src/cli/index.ts demo --output dist-demo",
+    "dev": "npm run generate:demo && vite",
     "format": "prettier --check \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
     "format:write": "prettier --write \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
+    "generate:demo": "tsx scripts/generate-demo-report.ts",
     "lint": "eslint .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit --pretty false",
+    "validate:demo": "tsx src/cli/index.ts validate public/demo-report.json",
     "verify": "node scripts/verify.mjs"
   },
   "engines": {

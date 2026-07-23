@@ -18,3 +18,5 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
   source-level breaking-change evidence.
 - Fix source-owner resolution across Windows sandbox path aliases and make formatting independent
   of a symlinked working directory.
+- Deliver a production React explorer and Node CLI with report import, JSON and Markdown export,
+  graph focus, filters, evidence details, migration checklists, and explicit non-happy states.

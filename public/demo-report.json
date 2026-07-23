@@ -1,0 +1,1289 @@
+{
+  "formatVersion": 1,
+  "toolVersion": "0.1.0",
+  "generatedAt": "2026-07-23T12:00:00.000Z",
+  "rootLabel": "fixture-monorepo",
+  "summary": {
+    "packages": 5,
+    "consumers": 3,
+    "examples": 3,
+    "changes": 7,
+    "breakingChanges": 2,
+    "impacts": 11,
+    "migrationTasks": 11
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "@echo/catalog-app",
+        "kind": "example",
+        "manifestPath": "apps/catalog/package.json",
+        "name": "@echo/catalog-app",
+        "version": "0.0.0"
+      },
+      {
+        "id": "@echo/core",
+        "kind": "package",
+        "manifestPath": "packages/core/package.json",
+        "name": "@echo/core",
+        "version": "2.0.0"
+      },
+      {
+        "id": "@echo/legacy-app",
+        "kind": "example",
+        "manifestPath": "apps/legacy/package.json",
+        "name": "@echo/legacy-app",
+        "version": "0.0.0"
+      },
+      {
+        "id": "@echo/node-adapter",
+        "kind": "consumer",
+        "manifestPath": "packages/node-adapter/package.json",
+        "name": "@echo/node-adapter",
+        "version": "1.3.0"
+      },
+      {
+        "id": "@echo/react",
+        "kind": "consumer",
+        "manifestPath": "packages/react/package.json",
+        "name": "@echo/react",
+        "version": "1.4.0"
+      },
+      {
+        "id": "@echo/testing",
+        "kind": "consumer",
+        "manifestPath": "packages/testing/package.json",
+        "name": "@echo/testing",
+        "version": "1.0.0"
+      },
+      {
+        "id": "@echo/theme",
+        "kind": "package",
+        "manifestPath": "packages/theme/package.json",
+        "name": "@echo/theme",
+        "version": "1.1.0"
+      },
+      {
+        "id": "@echo/worker-app",
+        "kind": "example",
+        "manifestPath": "apps/worker/package.json",
+        "name": "@echo/worker-app",
+        "version": "0.0.0"
+      }
+    ],
+    "edges": [
+      {
+        "id": "@echo/core->@echo/node-adapter:peerDependency",
+        "from": "@echo/core",
+        "to": "@echo/node-adapter",
+        "relationship": "peerDependency",
+        "range": "^2.0.0",
+        "evidencePath": "packages/node-adapter/package.json"
+      },
+      {
+        "id": "@echo/core->@echo/react:peerDependency",
+        "from": "@echo/core",
+        "to": "@echo/react",
+        "relationship": "peerDependency",
+        "range": "^1.0.0",
+        "evidencePath": "packages/react/package.json"
+      },
+      {
+        "id": "@echo/core->@echo/testing:dependency",
+        "from": "@echo/core",
+        "to": "@echo/testing",
+        "relationship": "dependency",
+        "range": "workspace:^",
+        "evidencePath": "packages/testing/package.json"
+      },
+      {
+        "id": "@echo/node-adapter->@echo/worker-app:dependency",
+        "from": "@echo/node-adapter",
+        "to": "@echo/worker-app",
+        "relationship": "dependency",
+        "range": "workspace:*",
+        "evidencePath": "apps/worker/package.json"
+      },
+      {
+        "id": "@echo/react->@echo/catalog-app:dependency",
+        "from": "@echo/react",
+        "to": "@echo/catalog-app",
+        "relationship": "dependency",
+        "range": "workspace:*",
+        "evidencePath": "apps/catalog/package.json"
+      },
+      {
+        "id": "@echo/react->@echo/legacy-app:dependency",
+        "from": "@echo/react",
+        "to": "@echo/legacy-app",
+        "relationship": "dependency",
+        "range": "workspace:*",
+        "evidencePath": "apps/legacy/package.json"
+      },
+      {
+        "id": "@echo/testing->@echo/legacy-app:devDependency",
+        "from": "@echo/testing",
+        "to": "@echo/legacy-app",
+        "relationship": "devDependency",
+        "range": "workspace:*",
+        "evidencePath": "apps/legacy/package.json"
+      },
+      {
+        "id": "@echo/theme->@echo/catalog-app:dependency",
+        "from": "@echo/theme",
+        "to": "@echo/catalog-app",
+        "relationship": "dependency",
+        "range": "workspace:*",
+        "evidencePath": "apps/catalog/package.json"
+      },
+      {
+        "id": "@echo/theme->@echo/react:dependency",
+        "from": "@echo/theme",
+        "to": "@echo/react",
+        "relationship": "dependency",
+        "range": "workspace:^",
+        "evidencePath": "packages/react/package.json"
+      }
+    ]
+  },
+  "changes": [
+    {
+      "id": "api-added:@echo/core:@echo/core!decodeEnvelope:function(1)",
+      "packageName": "@echo/core",
+      "changeType": "api-added",
+      "severity": "info",
+      "currentVersion": "2.0.0",
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "decodeEnvelope was added in @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        }
+      ],
+      "memberId": "@echo/core!decodeEnvelope:function(1)",
+      "memberName": "decodeEnvelope",
+      "previousVersion": "1.0.0",
+      "currentSignature": "export declare function decodeEnvelope(value: string): Envelope;"
+    },
+    {
+      "id": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "packageName": "@echo/core",
+      "changeType": "api-removed",
+      "severity": "high",
+      "currentVersion": "2.0.0",
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        }
+      ],
+      "memberId": "@echo/core!parseEnvelope:function(1)",
+      "memberName": "parseEnvelope",
+      "previousVersion": "1.0.0",
+      "previousSignature": "export declare function parseEnvelope(value: string): Envelope;"
+    },
+    {
+      "id": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "packageName": "@echo/core",
+      "changeType": "api-signature-changed",
+      "severity": "high",
+      "currentVersion": "2.0.0",
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        }
+      ],
+      "memberId": "@echo/core!Envelope:interface",
+      "memberName": "Envelope",
+      "previousVersion": "1.0.0",
+      "previousSignature": "export interface Envelope { id: string; }",
+      "currentSignature": "export interface Envelope { id: string; source: string; }"
+    },
+    {
+      "id": "peer-range-incompatible:@echo/core:@echo/react",
+      "packageName": "@echo/core",
+      "changeType": "peer-range-incompatible",
+      "severity": "high",
+      "currentVersion": "2.0.0",
+      "evidence": [
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react requires @echo/core@^1.0.0, but the workspace provides 2.0.0."
+        }
+      ],
+      "previousVersion": "1.0.0"
+    },
+    {
+      "id": "release-intent:@echo/core:retire-parser",
+      "packageName": "@echo/core",
+      "changeType": "release-intent",
+      "severity": "info",
+      "currentVersion": "2.0.0",
+      "evidence": [
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        }
+      ],
+      "previousVersion": "1.0.0",
+      "releaseType": "major"
+    },
+    {
+      "id": "api-added:@echo/node-adapter:@echo/node-adapter!createBatchTransport:function(1)",
+      "packageName": "@echo/node-adapter",
+      "changeType": "api-added",
+      "severity": "info",
+      "currentVersion": "1.3.0",
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-node-adapter.api.json",
+          "detail": "createBatchTransport was added in @echo/node-adapter@1.3.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/batch-transport.md",
+          "detail": "Add a deterministic batch transport factory for Node consumers."
+        }
+      ],
+      "memberId": "@echo/node-adapter!createBatchTransport:function(1)",
+      "memberName": "createBatchTransport",
+      "previousVersion": "1.2.0",
+      "currentSignature": "export declare function createBatchTransport(payloads: string[]): Envelope[];"
+    },
+    {
+      "id": "release-intent:@echo/node-adapter:batch-transport",
+      "packageName": "@echo/node-adapter",
+      "changeType": "release-intent",
+      "severity": "info",
+      "currentVersion": "1.3.0",
+      "evidence": [
+        {
+          "kind": "changeset",
+          "path": ".changeset/batch-transport.md",
+          "detail": "Add a deterministic batch transport factory for Node consumers."
+        }
+      ],
+      "previousVersion": "1.2.0",
+      "releaseType": "minor"
+    }
+  ],
+  "impacts": [
+    {
+      "id": "impact:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/catalog-app",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changeType": "api-removed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/catalog-app",
+      "targetKind": "example",
+      "severity": "high",
+      "riskType": "example-breakage",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/catalog-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/catalog/package.json",
+          "detail": "@echo/catalog-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/catalog/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/catalog-app imports EnvelopeView from @echo/react."
+        }
+      ],
+      "memberName": "parseEnvelope",
+      "sourceLocation": {
+        "path": "apps/catalog/src/main.tsx",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/catalog-app",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changeType": "api-signature-changed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/catalog-app",
+      "targetKind": "example",
+      "severity": "medium",
+      "riskType": "example-breakage",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/catalog-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/catalog/package.json",
+          "detail": "@echo/catalog-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/catalog/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/catalog-app imports EnvelopeView from @echo/react."
+        }
+      ],
+      "memberName": "Envelope",
+      "sourceLocation": {
+        "path": "apps/catalog/src/main.tsx",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/legacy-app",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changeType": "api-removed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/legacy-app",
+      "targetKind": "example",
+      "severity": "high",
+      "riskType": "example-breakage",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/legacy-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/legacy/package.json",
+          "detail": "@echo/legacy-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/legacy/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/legacy-app imports EnvelopeView from @echo/react."
+        }
+      ],
+      "memberName": "parseEnvelope",
+      "sourceLocation": {
+        "path": "apps/legacy/src/main.tsx",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/legacy-app",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changeType": "api-signature-changed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/legacy-app",
+      "targetKind": "example",
+      "severity": "medium",
+      "riskType": "example-breakage",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/legacy-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/legacy/package.json",
+          "detail": "@echo/legacy-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/legacy/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/legacy-app imports EnvelopeView from @echo/react."
+        }
+      ],
+      "memberName": "Envelope",
+      "sourceLocation": {
+        "path": "apps/legacy/src/main.tsx",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/node-adapter",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changeType": "api-signature-changed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/node-adapter",
+      "targetKind": "consumer",
+      "severity": "medium",
+      "riskType": "breaking-api",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/node-adapter"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/node-adapter/package.json",
+          "detail": "@echo/node-adapter declares @echo/core as a peerDependency with range ^2.0.0."
+        },
+        {
+          "kind": "source",
+          "path": "packages/node-adapter/src/index.ts",
+          "line": 1,
+          "detail": "@echo/node-adapter imports decodeEnvelope from @echo/core."
+        }
+      ],
+      "memberName": "Envelope",
+      "sourceLocation": {
+        "path": "packages/node-adapter/src/index.ts",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/react",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changeType": "api-removed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/react",
+      "targetKind": "consumer",
+      "severity": "high",
+      "riskType": "breaking-api",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "source",
+          "path": "packages/react/src/EnvelopeView.tsx",
+          "line": 1,
+          "detail": "@echo/react imports parseEnvelope from @echo/core."
+        }
+      ],
+      "memberName": "parseEnvelope",
+      "sourceLocation": {
+        "path": "packages/react/src/EnvelopeView.tsx",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/react",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changeType": "api-signature-changed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/react",
+      "targetKind": "consumer",
+      "severity": "medium",
+      "riskType": "breaking-api",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "source",
+          "path": "packages/react/src/EnvelopeView.tsx",
+          "line": 1,
+          "detail": "@echo/react imports parseEnvelope from @echo/core."
+        }
+      ],
+      "memberName": "Envelope",
+      "sourceLocation": {
+        "path": "packages/react/src/EnvelopeView.tsx",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:peer-range-incompatible:@echo/core:@echo/react:@echo/react",
+      "changeId": "peer-range-incompatible:@echo/core:@echo/react",
+      "changeType": "peer-range-incompatible",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/react",
+      "targetKind": "consumer",
+      "severity": "high",
+      "riskType": "peer-dependency",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react"
+      ],
+      "evidence": [
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react requires @echo/core@^1.0.0, but the workspace provides 2.0.0."
+        }
+      ],
+      "sourceLocation": {
+        "path": "packages/react/package.json"
+      }
+    },
+    {
+      "id": "impact:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/testing",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changeType": "api-removed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/testing",
+      "targetKind": "consumer",
+      "severity": "high",
+      "riskType": "breaking-api",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/testing"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/testing/package.json",
+          "detail": "@echo/testing declares @echo/core as a dependency with range workspace:^."
+        },
+        {
+          "kind": "source",
+          "path": "packages/testing/src/fixture.ts",
+          "line": 1,
+          "detail": "@echo/testing imports parseEnvelope from @echo/core."
+        }
+      ],
+      "memberName": "parseEnvelope",
+      "sourceLocation": {
+        "path": "packages/testing/src/fixture.ts",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/testing",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changeType": "api-signature-changed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/testing",
+      "targetKind": "consumer",
+      "severity": "medium",
+      "riskType": "breaking-api",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/testing"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/testing/package.json",
+          "detail": "@echo/testing declares @echo/core as a dependency with range workspace:^."
+        },
+        {
+          "kind": "source",
+          "path": "packages/testing/src/fixture.ts",
+          "line": 1,
+          "detail": "@echo/testing imports parseEnvelope from @echo/core."
+        }
+      ],
+      "memberName": "Envelope",
+      "sourceLocation": {
+        "path": "packages/testing/src/fixture.ts",
+        "line": 1
+      }
+    },
+    {
+      "id": "impact:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/worker-app",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changeType": "api-signature-changed",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/worker-app",
+      "targetKind": "example",
+      "severity": "medium",
+      "riskType": "example-breakage",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/node-adapter",
+        "@echo/worker-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/node-adapter/package.json",
+          "detail": "@echo/node-adapter declares @echo/core as a peerDependency with range ^2.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/worker/package.json",
+          "detail": "@echo/worker-app declares @echo/node-adapter as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/worker/src/main.ts",
+          "line": 1,
+          "detail": "@echo/worker-app imports createBatchTransport from @echo/node-adapter."
+        }
+      ],
+      "memberName": "Envelope",
+      "sourceLocation": {
+        "path": "apps/worker/src/main.ts",
+        "line": 1
+      }
+    }
+  ],
+  "migrationTasks": [
+    {
+      "id": "task:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/catalog-app",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/catalog-app",
+      "severity": "high",
+      "title": "Migrate @echo/catalog-app away from parseEnvelope",
+      "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/catalog-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/catalog/package.json",
+          "detail": "@echo/catalog-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/catalog/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/catalog-app imports EnvelopeView from @echo/react."
+        }
+      ]
+    },
+    {
+      "id": "task:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/catalog-app",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/catalog-app",
+      "severity": "medium",
+      "title": "Migrate @echo/catalog-app away from Envelope",
+      "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/catalog-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/catalog/package.json",
+          "detail": "@echo/catalog-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/catalog/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/catalog-app imports EnvelopeView from @echo/react."
+        }
+      ]
+    },
+    {
+      "id": "task:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/legacy-app",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/legacy-app",
+      "severity": "high",
+      "title": "Migrate @echo/legacy-app away from parseEnvelope",
+      "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/legacy-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/legacy/package.json",
+          "detail": "@echo/legacy-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/legacy/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/legacy-app imports EnvelopeView from @echo/react."
+        }
+      ]
+    },
+    {
+      "id": "task:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/legacy-app",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/legacy-app",
+      "severity": "medium",
+      "title": "Migrate @echo/legacy-app away from Envelope",
+      "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react",
+        "@echo/legacy-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/legacy/package.json",
+          "detail": "@echo/legacy-app declares @echo/react as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/legacy/src/main.tsx",
+          "line": 1,
+          "detail": "@echo/legacy-app imports EnvelopeView from @echo/react."
+        }
+      ]
+    },
+    {
+      "id": "task:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/node-adapter",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/node-adapter",
+      "severity": "medium",
+      "title": "Migrate @echo/node-adapter away from Envelope",
+      "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/node-adapter"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/node-adapter/package.json",
+          "detail": "@echo/node-adapter declares @echo/core as a peerDependency with range ^2.0.0."
+        },
+        {
+          "kind": "source",
+          "path": "packages/node-adapter/src/index.ts",
+          "line": 1,
+          "detail": "@echo/node-adapter imports decodeEnvelope from @echo/core."
+        }
+      ]
+    },
+    {
+      "id": "task:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/react",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/react",
+      "severity": "high",
+      "title": "Migrate @echo/react away from parseEnvelope",
+      "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "source",
+          "path": "packages/react/src/EnvelopeView.tsx",
+          "line": 1,
+          "detail": "@echo/react imports parseEnvelope from @echo/core."
+        }
+      ]
+    },
+    {
+      "id": "task:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/react",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/react",
+      "severity": "medium",
+      "title": "Migrate @echo/react away from Envelope",
+      "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react declares @echo/core as a peerDependency with range ^1.0.0."
+        },
+        {
+          "kind": "source",
+          "path": "packages/react/src/EnvelopeView.tsx",
+          "line": 1,
+          "detail": "@echo/react imports parseEnvelope from @echo/core."
+        }
+      ]
+    },
+    {
+      "id": "task:peer-range-incompatible:@echo/core:@echo/react:@echo/react",
+      "changeId": "peer-range-incompatible:@echo/core:@echo/react",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/react",
+      "severity": "high",
+      "title": "Review @echo/react peer range for @echo/core",
+      "action": "Update the declared peer range, install @echo/core, and run the consumer test suite.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/react"
+      ],
+      "evidence": [
+        {
+          "kind": "manifest",
+          "path": "packages/react/package.json",
+          "detail": "@echo/react requires @echo/core@^1.0.0, but the workspace provides 2.0.0."
+        }
+      ]
+    },
+    {
+      "id": "task:api-removed:@echo/core:@echo/core!parseEnvelope:function(1):@echo/testing",
+      "changeId": "api-removed:@echo/core:@echo/core!parseEnvelope:function(1)",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/testing",
+      "severity": "high",
+      "title": "Migrate @echo/testing away from parseEnvelope",
+      "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/testing"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "parseEnvelope existed in @echo/core@1.0.0."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/testing/package.json",
+          "detail": "@echo/testing declares @echo/core as a dependency with range workspace:^."
+        },
+        {
+          "kind": "source",
+          "path": "packages/testing/src/fixture.ts",
+          "line": 1,
+          "detail": "@echo/testing imports parseEnvelope from @echo/core."
+        }
+      ]
+    },
+    {
+      "id": "task:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/testing",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/testing",
+      "severity": "medium",
+      "title": "Migrate @echo/testing away from Envelope",
+      "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/testing"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/testing/package.json",
+          "detail": "@echo/testing declares @echo/core as a dependency with range workspace:^."
+        },
+        {
+          "kind": "source",
+          "path": "packages/testing/src/fixture.ts",
+          "line": 1,
+          "detail": "@echo/testing imports parseEnvelope from @echo/core."
+        }
+      ]
+    },
+    {
+      "id": "task:api-signature-changed:@echo/core:@echo/core!Envelope:interface:@echo/worker-app",
+      "changeId": "api-signature-changed:@echo/core:@echo/core!Envelope:interface",
+      "changedPackage": "@echo/core",
+      "targetPackage": "@echo/worker-app",
+      "severity": "medium",
+      "title": "Migrate @echo/worker-app away from Envelope",
+      "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
+      "evidencePath": [
+        "@echo/core",
+        "@echo/node-adapter",
+        "@echo/worker-app"
+      ],
+      "evidence": [
+        {
+          "kind": "api-report",
+          "path": "api-reports/previous/echo-core.api.json",
+          "detail": "Envelope changed its normalized public signature."
+        },
+        {
+          "kind": "api-report",
+          "path": "api-reports/current/echo-core.api.json",
+          "detail": "Compared with @echo/core@2.0.0."
+        },
+        {
+          "kind": "changeset",
+          "path": ".changeset/retire-parser.md",
+          "detail": "Replace `parseEnvelope` with `decodeEnvelope` and require an envelope source."
+        },
+        {
+          "kind": "manifest",
+          "path": "packages/node-adapter/package.json",
+          "detail": "@echo/node-adapter declares @echo/core as a peerDependency with range ^2.0.0."
+        },
+        {
+          "kind": "manifest",
+          "path": "apps/worker/package.json",
+          "detail": "@echo/worker-app declares @echo/node-adapter as a dependency with range workspace:*."
+        },
+        {
+          "kind": "source",
+          "path": "apps/worker/src/main.ts",
+          "line": 1,
+          "detail": "@echo/worker-app imports createBatchTransport from @echo/node-adapter."
+        }
+      ]
+    }
+  ]
+}
