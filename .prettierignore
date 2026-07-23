@@ -1,0 +1,8 @@
+dist/
+dist-cli/
+dist-demo/
+dist-release/
+coverage/
+playwright-report/
+test-results/
+package-lock.json

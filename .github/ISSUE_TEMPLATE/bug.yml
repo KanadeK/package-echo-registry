@@ -1,0 +1,42 @@
+name: Bug report
+description: Report a reproducible defect in analysis, CLI output, or the viewer.
+title: '[Bug]: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Remove credentials and private source content before submitting.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Package Echo Registry version or commit SHA.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide synthetic manifests, API report fragments, and the exact command.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed tokens, absolute personal paths, and private source content.
+          required: true
