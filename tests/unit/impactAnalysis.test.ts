@@ -217,12 +217,26 @@ describe('impact analysis', () => {
     );
 
     expect(impact?.sourceLocation).toBeUndefined();
+    expect(impact?.severity).toBe('medium');
     expect(impact?.evidence).toContainEqual(
       expect.objectContaining({
         kind: 'manifest',
         path: 'packages/react/package.json',
       }),
     );
+  });
+
+  it('does not propagate a member change through an unrelated consumer branch', () => {
+    const report = analyzeImpact(analysisInput, {
+      now: () => new Date('2026-07-23T12:00:00.000Z'),
+    });
+
+    expect(
+      report.impacts.some(
+        (impact) =>
+          impact.memberName === 'parseWidget' && impact.targetPackage === '@echo/legacy-host',
+      ),
+    ).toBe(false);
   });
 
   it('does not create impacts for additions, missing current snapshots, or compatible peers', () => {

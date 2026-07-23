@@ -12,3 +12,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
   and migration-task generation.
 - Add boundary coverage for mismatched API snapshots, unreachable graph paths, compatible peers,
   empty reports, and migration-task deduplication.
+- Import workspace manifests, Changesets, API Extractor snapshots, and TypeScript source usages
+  from a path-confined local adapter.
+- Add a synthetic five-package, three-app monorepo with two version changes and reproducible
+  source-level breaking-change evidence.
+- Fix source-owner resolution across Windows sandbox path aliases and make formatting independent
+  of a symlinked working directory.

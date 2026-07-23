@@ -1,0 +1,13 @@
+{
+  "name": "@echo/catalog-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@echo/react": "workspace:*",
+    "@echo/theme": "workspace:*"
+  },
+  "packageEcho": {
+    "kind": "example"
+  }
+}

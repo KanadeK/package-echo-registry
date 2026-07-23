@@ -1,0 +1,12 @@
+{
+  "name": "@echo/testing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@echo/core": "workspace:^"
+  },
+  "packageEcho": {
+    "kind": "consumer"
+  }
+}

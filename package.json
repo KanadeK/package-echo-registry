@@ -29,8 +29,8 @@
     "package-echo": "./dist-cli/cli.js"
   },
   "scripts": {
-    "format": "prettier --check .",
-    "format:write": "prettier --write .",
+    "format": "prettier --check \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
+    "format:write": "prettier --write \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
     "lint": "eslint .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",

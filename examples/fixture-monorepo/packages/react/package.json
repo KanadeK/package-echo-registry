@@ -1,0 +1,16 @@
+{
+  "name": "@echo/react",
+  "version": "1.4.0",
+  "private": true,
+  "type": "module",
+  "peerDependencies": {
+    "@echo/core": "^1.0.0",
+    "react": "^19.0.0"
+  },
+  "dependencies": {
+    "@echo/theme": "workspace:^"
+  },
+  "packageEcho": {
+    "kind": "consumer"
+  }
+}

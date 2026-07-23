@@ -121,8 +121,16 @@ function impactsForApiChange(
   );
   const candidateTargets = new Set<string>(directUsages.map((usage) => usage.consumerName));
 
-  for (const target of listDownstreamTargets(reportGraph, change.packageName)) {
-    candidateTargets.add(target);
+  if (directUsages.length === 0) {
+    for (const target of listDownstreamTargets(reportGraph, change.packageName)) {
+      candidateTargets.add(target);
+    }
+  } else {
+    for (const directTarget of [...candidateTargets]) {
+      for (const target of listDownstreamTargets(reportGraph, directTarget)) {
+        candidateTargets.add(target);
+      }
+    }
   }
 
   const impacts: Impact[] = [];
@@ -151,7 +159,7 @@ function impactsForApiChange(
       changedPackage: change.packageName,
       targetPackage: target,
       targetKind: targetManifest.kind,
-      severity: 'high',
+      severity: directUsages.length === 0 ? 'medium' : 'high',
       riskType: targetManifest.kind === 'example' ? 'example-breakage' : 'breaking-api',
       evidencePath: path,
       evidence,
@@ -288,7 +296,7 @@ export function analyzeImpact(input: AnalysisInput, options: AnalysisOptions): A
     generatedAt: options.now().toISOString(),
     rootLabel: input.rootLabel,
     summary: {
-      packages: input.manifests.filter((manifest) => manifest.kind === 'package').length,
+      packages: input.manifests.filter((manifest) => manifest.kind !== 'example').length,
       consumers: input.manifests.filter((manifest) => manifest.kind === 'consumer').length,
       examples: input.manifests.filter((manifest) => manifest.kind === 'example').length,
       changes: changes.length,

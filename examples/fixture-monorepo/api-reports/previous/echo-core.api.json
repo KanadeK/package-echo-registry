@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.52.11",
+    "schemaVersion": 1011,
+    "packageVersion": "1.0.0"
+  },
+  "kind": "Package",
+  "canonicalReference": "@echo/core!",
+  "name": "@echo/core",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@echo/core!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Interface",
+          "canonicalReference": "@echo/core!Envelope:interface",
+          "name": "Envelope",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface Envelope { id: string; }"
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@echo/core!parseEnvelope:function(1)",
+          "name": "parseEnvelope",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function parseEnvelope(value: string): Envelope;"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

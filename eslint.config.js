@@ -35,4 +35,17 @@ export default tseslint.config(
       '@typescript-eslint/no-misused-promises': 'error',
     },
   },
+  {
+    files: ['examples/**/*.ts', 'examples/**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        project: false,
+        projectService: false,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
+    },
+  },
 );

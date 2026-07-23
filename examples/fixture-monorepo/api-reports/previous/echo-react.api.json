@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.52.11",
+    "schemaVersion": 1011,
+    "packageVersion": "1.4.0"
+  },
+  "kind": "Package",
+  "canonicalReference": "@echo/react!",
+  "name": "@echo/react",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@echo/react!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "@echo/react!EnvelopeView:function(1)",
+          "name": "EnvelopeView",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function EnvelopeView(props: { value: string }): ReactElement;"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
