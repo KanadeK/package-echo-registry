@@ -8,3 +8,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ## [Unreleased]
 
 - Establish the repository, quality gates, architecture boundary, and release policies.
+- Add deterministic API diffing, downstream graph propagation, peer-range checks, evidence paths,
+  and migration-task generation.
+- Add boundary coverage for mismatched API snapshots, unreachable graph paths, compatible peers,
+  empty reports, and migration-task deduplication.
