@@ -7,6 +7,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-07-28
+
 - Establish the repository, quality gates, architecture boundary, and release policies.
 - Add deterministic API diffing, downstream graph propagation, peer-range checks, evidence paths,
   and migration-task generation.
@@ -27,3 +29,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
   a reproducible benchmark, and a screenshot captured from the production fixture report.
 - Add Linux, Windows, and macOS CI, dependency and secret auditing, synthetic-only Pages, tag-driven
   releases, cross-platform task wrappers, clean-room package smoke tests, and SHA-256 manifests.
+
+[Unreleased]: https://github.com/KanadeK/package-echo-registry/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/KanadeK/package-echo-registry/releases/tag/v0.1.0
