@@ -30,9 +30,12 @@
   },
   "scripts": {
     "analyze": "tsx src/cli/index.ts analyze",
+    "benchmark": "npm run build && tsx scripts/benchmark.ts",
     "build": "npm run generate:demo && npm run typecheck && vite build",
+    "capture:screenshot": "npm run build && tsx scripts/captureScreenshot.ts",
     "demo": "tsx src/cli/index.ts demo --output dist-demo",
     "dev": "npm run generate:demo && vite",
+    "docs:check": "node scripts/checkDocs.mjs",
     "format": "prettier --check \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
     "format:write": "prettier --write \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
     "generate:demo": "tsx scripts/generate-demo-report.ts",

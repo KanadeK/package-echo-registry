@@ -23,3 +23,5 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Add deterministic filesystem and report-integrity failures, output redaction, absolute-path
   rejection, four browser journeys, axe accessibility checks, keyboard coverage, and mobile
   overflow regression coverage.
+- Complete English and Simplified Chinese usage documentation, architecture and privacy references,
+  a reproducible benchmark, and a screenshot captured from the production fixture report.
