@@ -308,11 +308,7 @@
       "targetKind": "example",
       "severity": "high",
       "riskType": "example-breakage",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/catalog-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/catalog-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -361,11 +357,7 @@
       "targetKind": "example",
       "severity": "medium",
       "riskType": "example-breakage",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/catalog-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/catalog-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -414,11 +406,7 @@
       "targetKind": "example",
       "severity": "high",
       "riskType": "example-breakage",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/legacy-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/legacy-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -467,11 +455,7 @@
       "targetKind": "example",
       "severity": "medium",
       "riskType": "example-breakage",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/legacy-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/legacy-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -520,10 +504,7 @@
       "targetKind": "consumer",
       "severity": "medium",
       "riskType": "breaking-api",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/node-adapter"
-      ],
+      "evidencePath": ["@echo/core", "@echo/node-adapter"],
       "evidence": [
         {
           "kind": "api-report",
@@ -567,10 +548,7 @@
       "targetKind": "consumer",
       "severity": "high",
       "riskType": "breaking-api",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react"],
       "evidence": [
         {
           "kind": "api-report",
@@ -614,10 +592,7 @@
       "targetKind": "consumer",
       "severity": "medium",
       "riskType": "breaking-api",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react"],
       "evidence": [
         {
           "kind": "api-report",
@@ -661,10 +636,7 @@
       "targetKind": "consumer",
       "severity": "high",
       "riskType": "peer-dependency",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react"],
       "evidence": [
         {
           "kind": "manifest",
@@ -685,10 +657,7 @@
       "targetKind": "consumer",
       "severity": "high",
       "riskType": "breaking-api",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/testing"
-      ],
+      "evidencePath": ["@echo/core", "@echo/testing"],
       "evidence": [
         {
           "kind": "api-report",
@@ -732,10 +701,7 @@
       "targetKind": "consumer",
       "severity": "medium",
       "riskType": "breaking-api",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/testing"
-      ],
+      "evidencePath": ["@echo/core", "@echo/testing"],
       "evidence": [
         {
           "kind": "api-report",
@@ -779,11 +745,7 @@
       "targetKind": "example",
       "severity": "medium",
       "riskType": "example-breakage",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/node-adapter",
-        "@echo/worker-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/node-adapter", "@echo/worker-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -833,11 +795,7 @@
       "severity": "high",
       "title": "Migrate @echo/catalog-app away from parseEnvelope",
       "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/catalog-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/catalog-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -880,11 +838,7 @@
       "severity": "medium",
       "title": "Migrate @echo/catalog-app away from Envelope",
       "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/catalog-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/catalog-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -927,11 +881,7 @@
       "severity": "high",
       "title": "Migrate @echo/legacy-app away from parseEnvelope",
       "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/legacy-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/legacy-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -974,11 +924,7 @@
       "severity": "medium",
       "title": "Migrate @echo/legacy-app away from Envelope",
       "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react",
-        "@echo/legacy-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react", "@echo/legacy-app"],
       "evidence": [
         {
           "kind": "api-report",
@@ -1021,10 +967,7 @@
       "severity": "medium",
       "title": "Migrate @echo/node-adapter away from Envelope",
       "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/node-adapter"
-      ],
+      "evidencePath": ["@echo/core", "@echo/node-adapter"],
       "evidence": [
         {
           "kind": "api-report",
@@ -1062,10 +1005,7 @@
       "severity": "high",
       "title": "Migrate @echo/react away from parseEnvelope",
       "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react"],
       "evidence": [
         {
           "kind": "api-report",
@@ -1103,10 +1043,7 @@
       "severity": "medium",
       "title": "Migrate @echo/react away from Envelope",
       "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react"],
       "evidence": [
         {
           "kind": "api-report",
@@ -1144,10 +1081,7 @@
       "severity": "high",
       "title": "Review @echo/react peer range for @echo/core",
       "action": "Update the declared peer range, install @echo/core, and run the consumer test suite.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/react"
-      ],
+      "evidencePath": ["@echo/core", "@echo/react"],
       "evidence": [
         {
           "kind": "manifest",
@@ -1164,10 +1098,7 @@
       "severity": "high",
       "title": "Migrate @echo/testing away from parseEnvelope",
       "action": "Update the evidenced usage path for parseEnvelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/testing"
-      ],
+      "evidencePath": ["@echo/core", "@echo/testing"],
       "evidence": [
         {
           "kind": "api-report",
@@ -1205,10 +1136,7 @@
       "severity": "medium",
       "title": "Migrate @echo/testing away from Envelope",
       "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/testing"
-      ],
+      "evidencePath": ["@echo/core", "@echo/testing"],
       "evidence": [
         {
           "kind": "api-report",
@@ -1246,11 +1174,7 @@
       "severity": "medium",
       "title": "Migrate @echo/worker-app away from Envelope",
       "action": "Update the evidenced usage path for Envelope and run the affected consumer or example tests.",
-      "evidencePath": [
-        "@echo/core",
-        "@echo/node-adapter",
-        "@echo/worker-app"
-      ],
+      "evidencePath": ["@echo/core", "@echo/node-adapter", "@echo/worker-app"],
       "evidence": [
         {
           "kind": "api-report",

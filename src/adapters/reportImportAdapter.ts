@@ -1,4 +1,5 @@
 import type { AnalysisReport } from '../core/model.js';
+import { sanitizeReport } from '../core/privacy.js';
 import { PROJECT_METADATA } from '../core/projectMetadata.js';
 import { reportSchema } from '../core/schema.js';
 import { AdapterError } from './errors.js';
@@ -78,12 +79,13 @@ export function parseReportJson(text: string): AnalysisReport {
       'The selected JSON does not match the report schema.',
     );
   }
-  const report = result.data as AnalysisReport;
+  const report = sanitizeReport(result.data as AnalysisReport);
   assertReportIntegrity(report);
   return report;
 }
 
 export function serializeReportJson(report: AnalysisReport): string {
-  assertReportIntegrity(report);
-  return `${JSON.stringify(report, null, 2)}\n`;
+  const sanitized = sanitizeReport(report);
+  assertReportIntegrity(sanitized);
+  return `${JSON.stringify(sanitized, null, 2)}\n`;
 }

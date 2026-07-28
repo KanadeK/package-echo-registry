@@ -7,6 +7,7 @@ import { loadAnalysisInput } from '../src/adapters/fsMonorepoAdapter.js';
 import { serializeReportJson } from '../src/adapters/reportImportAdapter.js';
 import { analyzeImpact } from '../src/core/analyzeImpact.js';
 import { renderMarkdownReport } from '../src/core/reportExport.js';
+import { formatDemoReportJson } from './formatDemoReport.js';
 
 const repositoryRoot = fileURLToPath(new URL('..', import.meta.url));
 const fixtureRoot = path.join(repositoryRoot, 'examples', 'fixture-monorepo');
@@ -19,6 +20,7 @@ const input = await loadAnalysisInput({
 const report = analyzeImpact(input, {
   now: () => new Date('2026-07-23T12:00:00.000Z'),
 });
+const reportJson = await formatDemoReportJson(serializeReportJson(report));
 
 await Promise.all([
   mkdir(publicDirectory, {
@@ -29,12 +31,8 @@ await Promise.all([
   }),
 ]);
 await Promise.all([
-  writeFile(path.join(publicDirectory, 'demo-report.json'), serializeReportJson(report), 'utf8'),
-  writeFile(
-    path.join(demoDirectory, 'package-echo-report.json'),
-    serializeReportJson(report),
-    'utf8',
-  ),
+  writeFile(path.join(publicDirectory, 'demo-report.json'), reportJson, 'utf8'),
+  writeFile(path.join(demoDirectory, 'package-echo-report.json'), reportJson, 'utf8'),
   writeFile(
     path.join(demoDirectory, 'package-echo-report.md'),
     renderMarkdownReport(report),

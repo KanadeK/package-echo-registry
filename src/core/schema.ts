@@ -14,10 +14,29 @@ const changeTypeSchema = z.enum([
 const riskTypeSchema = z.enum(['breaking-api', 'example-breakage', 'peer-dependency']);
 const evidenceKindSchema = z.enum(['api-report', 'changeset', 'manifest', 'source']);
 
+function isRepositoryRelativePath(value: string): boolean {
+  if (
+    value.startsWith('/') ||
+    value.startsWith('\\') ||
+    /^[A-Za-z]:[\\/]/.test(value) ||
+    value.includes('\\') ||
+    value.includes('\0')
+  ) {
+    return false;
+  }
+  return value.split('/').every((segment) => segment !== '..' && segment !== '.');
+}
+
+const repositoryPathSchema = z
+  .string()
+  .min(1)
+  .max(4096)
+  .refine(isRepositoryRelativePath, 'Expected a repository-relative POSIX path.');
+
 const evidenceSchema = z
   .object({
     kind: evidenceKindSchema,
-    path: z.string().min(1),
+    path: repositoryPathSchema,
     detail: z.string().min(1),
     line: z.number().int().positive().optional(),
   })
@@ -46,7 +65,7 @@ const graphNodeSchema = z
     name: z.string().min(1),
     version: z.string().min(1),
     kind: packageKindSchema,
-    manifestPath: z.string().min(1),
+    manifestPath: repositoryPathSchema,
   })
   .strict();
 
@@ -57,7 +76,7 @@ const graphEdgeSchema = z
     to: z.string().min(1),
     relationship: relationshipSchema,
     range: z.string().min(1),
-    evidencePath: z.string().min(1),
+    evidencePath: repositoryPathSchema,
   })
   .strict();
 
@@ -76,7 +95,7 @@ const impactSchema = z
     memberName: z.string().min(1).optional(),
     sourceLocation: z
       .object({
-        path: z.string().min(1),
+        path: repositoryPathSchema,
         line: z.number().int().positive().optional(),
       })
       .strict()
@@ -103,7 +122,14 @@ export const reportSchema = z
     formatVersion: z.number().int().positive(),
     toolVersion: z.string().min(1),
     generatedAt: z.iso.datetime(),
-    rootLabel: z.string().min(1),
+    rootLabel: z
+      .string()
+      .min(1)
+      .max(256)
+      .refine(
+        (value) => !value.includes('/') && !value.includes('\\') && !value.includes('\0'),
+        'Expected a local root label rather than an absolute path.',
+      ),
     summary: z
       .object({
         packages: z.number().int().nonnegative(),

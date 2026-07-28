@@ -3,6 +3,10 @@ import { readFile, stat } from 'node:fs/promises';
 import { AdapterError } from './errors.js';
 import { repositoryRelativePath } from './pathSafety.js';
 
+type ReadTextFile = (filePath: string) => Promise<string>;
+
+const defaultReadTextFile: ReadTextFile = async (filePath) => readFile(filePath, 'utf8');
+
 function errorCode(error: unknown): string | undefined {
   return typeof error === 'object' && error !== null && 'code' in error
     ? String(error.code)
@@ -30,10 +34,14 @@ export async function assertDirectory(root: string): Promise<void> {
   }
 }
 
-export async function readUtf8File(root: string, absolutePath: string): Promise<string> {
+export async function readUtf8File(
+  root: string,
+  absolutePath: string,
+  readTextFile: ReadTextFile = defaultReadTextFile,
+): Promise<string> {
   const relativePath = repositoryRelativePath(root, absolutePath);
   try {
-    return await readFile(absolutePath, 'utf8');
+    return await readTextFile(absolutePath);
   } catch (error) {
     const code = errorCode(error);
     const adapterCode =

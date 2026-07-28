@@ -37,8 +37,11 @@
     "format:write": "prettier --write \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
     "generate:demo": "tsx scripts/generate-demo-report.ts",
     "lint": "eslint .",
+    "pretest:e2e": "npm run build",
+    "preview": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "test:e2e": "node scripts/runE2E.mjs",
     "typecheck": "tsc --noEmit --pretty false",
     "validate:demo": "tsx src/cli/index.ts validate public/demo-report.json",
     "verify": "node scripts/verify.mjs"

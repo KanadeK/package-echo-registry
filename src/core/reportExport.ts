@@ -1,4 +1,5 @@
 import type { AnalysisReport, Evidence } from './model.js';
+import { sanitizeReport } from './privacy.js';
 
 function escapeTableCell(value: string): string {
   return value.replaceAll('|', '\\|').replaceAll('\n', ' ');
@@ -14,27 +15,28 @@ function evidenceText(evidence: Evidence[]): string {
 }
 
 export function renderMarkdownReport(report: AnalysisReport): string {
+  const sanitized = sanitizeReport(report);
   const lines = [
     '# Package Echo Registry report',
     '',
-    `Generated: ${report.generatedAt}`,
-    `Root: ${report.rootLabel}`,
+    `Generated: ${sanitized.generatedAt}`,
+    `Root: ${sanitized.rootLabel}`,
     '',
     '## Summary',
     '',
     '| Packages | Consumers | Examples | Changes | Impacts | Migration tasks |',
     '| ---: | ---: | ---: | ---: | ---: | ---: |',
-    `| ${report.summary.packages} | ${report.summary.consumers} | ${report.summary.examples} | ${report.summary.changes} | ${report.summary.impacts} | ${report.summary.migrationTasks} |`,
+    `| ${sanitized.summary.packages} | ${sanitized.summary.consumers} | ${sanitized.summary.examples} | ${sanitized.summary.changes} | ${sanitized.summary.impacts} | ${sanitized.summary.migrationTasks} |`,
     '',
     '## Impact paths',
     '',
   ];
 
-  if (report.impacts.length === 0) {
+  if (sanitized.impacts.length === 0) {
     lines.push('No downstream impacts were detected.', '');
   } else {
     lines.push('| Severity | Risk | Path | Evidence |', '| --- | --- | --- | --- |');
-    for (const impact of report.impacts) {
+    for (const impact of sanitized.impacts) {
       lines.push(
         `| ${impact.severity} | ${impact.riskType} | ${escapeTableCell(impact.evidencePath.join(' -> '))} | ${escapeTableCell(evidenceText(impact.evidence))} |`,
       );
@@ -43,10 +45,10 @@ export function renderMarkdownReport(report: AnalysisReport): string {
   }
 
   lines.push('## Migration checklist', '');
-  if (report.migrationTasks.length === 0) {
+  if (sanitized.migrationTasks.length === 0) {
     lines.push('No migration tasks were generated.', '');
   } else {
-    for (const task of report.migrationTasks) {
+    for (const task of sanitized.migrationTasks) {
       lines.push(
         `- [ ] **${task.title}**`,
         `  - Action: ${task.action}`,
