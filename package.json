@@ -22,7 +22,10 @@
   ],
   "files": [
     "dist-cli",
+    "examples/fixture-monorepo",
     "README.md",
+    "README.zh-CN.md",
+    "THIRD_PARTY_NOTICES.md",
     "LICENSE"
   ],
   "bin": {
@@ -32,7 +35,9 @@
     "analyze": "tsx src/cli/index.ts analyze",
     "benchmark": "npm run build && tsx scripts/benchmark.ts",
     "build": "npm run generate:demo && npm run typecheck && vite build",
+    "build:cli": "node scripts/buildCli.mjs",
     "capture:screenshot": "npm run build && tsx scripts/captureScreenshot.ts",
+    "ci:check": "node scripts/checkWorkflows.mjs",
     "demo": "tsx src/cli/index.ts demo --output dist-demo",
     "dev": "npm run generate:demo && vite",
     "docs:check": "node scripts/checkDocs.mjs",
@@ -40,8 +45,11 @@
     "format:write": "prettier --write \"**/*.{css,html,js,json,md,mjs,ts,tsx,yaml,yml}\"",
     "generate:demo": "tsx scripts/generate-demo-report.ts",
     "lint": "eslint .",
+    "package": "node scripts/packageRelease.mjs",
     "pretest:e2e": "npm run build",
     "preview": "vite preview",
+    "release-check": "node scripts/releaseCheck.mjs",
+    "secret:scan": "node scripts/secretScan.mjs",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "node scripts/runE2E.mjs",

@@ -25,3 +25,5 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
   overflow regression coverage.
 - Complete English and Simplified Chinese usage documentation, architecture and privacy references,
   a reproducible benchmark, and a screenshot captured from the production fixture report.
+- Add Linux, Windows, and macOS CI, dependency and secret auditing, synthetic-only Pages, tag-driven
+  releases, cross-platform task wrappers, clean-room package smoke tests, and SHA-256 manifests.

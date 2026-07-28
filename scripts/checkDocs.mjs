@@ -4,7 +4,15 @@ import process from 'node:process';
 import { fileURLToPath, pathToFileURL, URL } from 'node:url';
 
 const repositoryRoot = fileURLToPath(new URL('..', import.meta.url));
-const topLevel = ['README.md', 'README.zh-CN.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md'];
+const topLevel = [
+  'README.md',
+  'README.zh-CN.md',
+  'CHANGELOG.md',
+  'CODE_OF_CONDUCT.md',
+  'CONTRIBUTING.md',
+  'SECURITY.md',
+  'THIRD_PARTY_NOTICES.md',
+];
 const linkPattern = /!?\[[^\]]*]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
 
 export async function checkDocumentation() {

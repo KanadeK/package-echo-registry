@@ -94,7 +94,7 @@ npm run analyze -- /path/to/monorepo \
 GitHub Release 提供可安装的 npm 归档。下载后可执行：
 
 ```bash
-npm install --global ./package-echo-registry-0.1.0.tgz
+npm install --global ./package-echo-registry-0.1.0-cli-any.tgz
 package-echo demo
 ```
 
@@ -151,6 +151,10 @@ v0.1.0 已验证测试：
 记录的 release gate 中，核心行覆盖率为 97.96%，分支覆盖率为 86.95%，高于 80% 门槛。
 完整门禁还检查 Prettier、ESLint、严格 TypeScript、生产构建和生成的 demo。实测分析与页面
 耗时见[基准文档](docs/BENCHMARK.md)。
+
+`npm run package` 会在 `dist-release/` 中生成可安装 CLI 归档、静态 viewer 归档、当前样例
+JSON/Markdown 报告和 `SHA256SUMS.txt`，随后在干净临时目录中安装或解压两种归档并执行
+冒烟验证。
 
 ## 隐私与安全
 

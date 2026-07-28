@@ -1,4 +1,13 @@
-.PHONY: verify
+.PHONY: verify demo package release-check
 
 verify:
-	npm run verify
+	node scripts/verify.mjs
+
+demo:
+	node scripts/demo.mjs
+
+package:
+	npm run package
+
+release-check:
+	npm run release-check

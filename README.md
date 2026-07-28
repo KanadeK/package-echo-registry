@@ -96,7 +96,7 @@ npm run analyze -- /path/to/monorepo \
 The GitHub release includes an installable npm archive. After downloading it:
 
 ```bash
-npm install --global ./package-echo-registry-0.1.0.tgz
+npm install --global ./package-echo-registry-0.1.0-cli-any.tgz
 package-echo demo
 ```
 
@@ -157,6 +157,10 @@ The verified v0.1.0 suite contains:
 Core line coverage is 97.96% and branch coverage is 86.95% on the recorded release gate, above the
 80% threshold. The full gate also checks formatting, ESLint, strict TypeScript, production build,
 and the generated demo. See [Benchmark](docs/BENCHMARK.md) for measured analysis and page timings.
+
+`npm run package` creates the installable CLI archive, static viewer archive, current sample JSON
+and Markdown reports, and `SHA256SUMS.txt` under `dist-release/`. It then installs or extracts both
+archives in clean temporary directories and runs their smoke checks.
 
 ## Privacy and security
 

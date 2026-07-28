@@ -10,6 +10,13 @@ import { AdapterError } from '../adapters/errors.js';
 import { PROJECT_METADATA } from '../core/projectMetadata.js';
 import { analyzeRepository, validateReportFile } from './commands.js';
 
+function repositoryRootFromModule(moduleUrl: string): string {
+  const moduleDirectory = path.dirname(fileURLToPath(moduleUrl));
+  return path.basename(moduleDirectory) === 'dist-cli'
+    ? path.dirname(moduleDirectory)
+    : path.resolve(moduleDirectory, '..', '..');
+}
+
 function writeAnalysisSummary(result: Awaited<ReturnType<typeof analyzeRepository>>): void {
   process.stdout.write(
     [
@@ -72,7 +79,7 @@ export function createProgram(): Command {
     .description('Analyze the committed synthetic monorepo fixture.')
     .option('-o, --output <directory>', 'report output directory', 'dist-demo')
     .action(async (options: { output: string }) => {
-      const repositoryRoot = fileURLToPath(new URL('../..', import.meta.url));
+      const repositoryRoot = repositoryRootFromModule(import.meta.url);
       writeAnalysisSummary(
         await analyzeRepository({
           root: path.join(repositoryRoot, 'examples', 'fixture-monorepo'),
