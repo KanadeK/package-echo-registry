@@ -34,7 +34,7 @@ jobs:
       - run: npm run build
       - run: npm run test:e2e
       - name: Upload test evidence
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: package-echo-test-evidence
           path: |
@@ -75,7 +75,7 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npm run package
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: package-echo-release-candidate
           path: dist-release/
